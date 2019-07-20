@@ -1,0 +1,44 @@
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+<div class="img_gall"></div>
+ 
+<script>
+
+function init_ajax(){
+    $.ajax({
+    type:'GET',
+    url:'http://test.sgether.tv/api/post/list',
+    data:{
+        'type':'live',
+        'row_count':5
+    },
+    dataType:'json',
+    success:function(jsondata){
+        for(i=0; i<jsondata.result.posts.length; i++){
+            $('.img_gall').append('<img src="'+jsondata.result.posts[i].thumb_url+'" height="200px">');
+        }
+
+        $('.img_gall').slick({
+            autoplay:true,
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            
+        });
+    }
+
+});
+}
+
+$(document).ready(function(){
+    init_ajax()
+});
+        
+</script>

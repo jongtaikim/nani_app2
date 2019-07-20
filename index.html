@@ -1,7 +1,76 @@
-아아앙
+<link href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css' rel="stylesheet">
 
-111
-ㅇ니ㅏ러ㅣㄴㅇ
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 
-ㅏ낭
-ㄹ
+  
+<style>
+.box1{width: 100%;  height: 50px;padding: 200px;background-color:#EC8180;color:#fff;display:non1e}
+.box1 >h1{font-size: 40px;display: non1e}
+</style>
+
+<body style="padding: 0;margin: 0px">
+<div id="app1" class="box1  ">
+    <h1>안녕하세요</h1>
+</div>
+
+</body>
+
+<script>
+/*$('#app1').html('안녕하세요.').css('background-color','#EC8180').animate({
+    width:'200px',
+},500);
+*/
+
+
+
+function winset(){
+    $('#app1').height($(window).height());
+
+    console.log('사이즈 조정됨');
+}
+
+
+function init_ani(){
+    setTimeout(function(){
+        $('#app1').addClass('animated fadeIn').show();
+    },500);
+    
+    setTimeout(function(){
+        $('#app1 > h1').addClass('animated fadeIn').show();
+    },1500);
+
+    setTimeout(function(){
+        $('#app1 > h1').addClass('animated fadeOut').show();
+    },3000);
+}
+
+
+function ajax_test(){
+
+    $.ajax({
+        type:'GET',
+        url:'http://test.sgether.tv',
+        dataType:'html',
+        success:function(htmlData){
+            $('#app1').html(htmlData);
+        }
+    });
+
+}
+
+
+$('document').ready(function(){
+    
+    winset();
+    //init_ani();
+    //ajax_test();
+    
+});
+$(window).resize(function(){
+    winset();
+
+});
+</script>
